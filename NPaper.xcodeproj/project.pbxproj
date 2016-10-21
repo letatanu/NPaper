@@ -13,6 +13,7 @@
 		061788EC1D1F573700E30172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 061788EA1D1F573700E30172 /* Main.storyboard */; };
 		061788F71D1F573700E30172 /* NPaperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061788F61D1F573700E30172 /* NPaperTests.swift */; };
 		061789021D1F573700E30172 /* NPaperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061789011D1F573700E30172 /* NPaperUITests.swift */; };
+		061789101D1F57A500E30172 /* NDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617890F1D1F57A500E30172 /* NDrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		061788FD1D1F573700E30172 /* NPaperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NPaperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		061789011D1F573700E30172 /* NPaperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPaperUITests.swift; sourceTree = "<group>"; };
 		061789031D1F573700E30172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0617890F1D1F57A500E30172 /* NDrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NDrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				061788E41D1F573700E30172 /* AppDelegate.swift */,
+				0617890F1D1F57A500E30172 /* NDrawingView.swift */,
 				061788E61D1F573700E30172 /* ViewController.swift */,
 				061788E81D1F573700E30172 /* Assets.xcassets */,
 				061788EA1D1F573700E30172 /* Main.storyboard */,
@@ -190,13 +193,16 @@
 				TargetAttributes = {
 					061788E01D1F573700E30172 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					061788F11D1F573700E30172 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 061788E01D1F573700E30172;
 					};
 					061788FC1D1F573700E30172 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 061788E01D1F573700E30172;
 					};
 				};
@@ -253,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				061788E71D1F573700E30172 /* ViewController.swift in Sources */,
+				061789101D1F57A500E30172 /* NDrawingView.swift in Sources */,
 				061788E51D1F573700E30172 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,6 +398,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = letanu.NPaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -403,6 +411,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = letanu.NPaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -415,6 +424,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = letanu.NPaperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NPaper.app/Contents/MacOS/NPaper";
 			};
 			name = Debug;
@@ -428,6 +438,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = letanu.NPaperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NPaper.app/Contents/MacOS/NPaper";
 			};
 			name = Release;
@@ -440,6 +451,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = letanu.NPaperUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = NPaper;
 			};
 			name = Debug;
@@ -452,6 +464,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = letanu.NPaperUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = NPaper;
 			};
 			name = Release;
@@ -475,6 +488,7 @@
 				061789081D1F573700E30172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		061789091D1F573700E30172 /* Build configuration list for PBXNativeTarget "NPaperTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +497,7 @@
 				0617890B1D1F573700E30172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0617890C1D1F573700E30172 /* Build configuration list for PBXNativeTarget "NPaperUITests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +506,7 @@
 				0617890E1D1F573700E30172 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
