@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class NDrawingView: NSImageView {
+class Paper: NSView {
     //@IBOutlet weak var _image: NSImage!
     var firstPoint = NSPoint.zero
     var lastPoint = NSPoint.zero
@@ -74,27 +74,10 @@ class NDrawingView: NSImageView {
         lastPoint = point
         path.line(to: lastPoint)
         needsDisplay = true
-        drawBitMap()
+       // drawBitMap()
         
-        self.image = NSImage()
-        self.image = tempImage
+       ////
         path.removeAllPoints()
     }
-    
-    func drawBitMap()
-    {
-       self.lockFocus()
-        
-        let bitmap = NSBitmapImageRep(focusedViewRect: self.bounds)
-        //let bitmap = NSImage.init(data: self.dataWithPDF(inside: self.bounds))
-        self.unlockFocus()
-        
-        //tempImage = NSImage(size: self.bounds.size)
-        
-        if let tt = bitmap
-        {
-            //tempImage = tt
-            tempImage.addRepresentation(tt)
-        }
-    }
+
 }

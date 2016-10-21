@@ -9,13 +9,13 @@
 import Cocoa
 
 class ViewController: NSViewController {
-  @IBOutlet weak var drawingView: NDrawingView?
+  //@IBOutlet weak var drawingView: NDrawingView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawingView = NDrawingView()
-        drawingView?.sizeToFit()
-        drawingView?.image = NSImage(size: self.view.bounds.size)
+     //   drawingView = NDrawingView()
+      //  drawingView?.sizeToFit()
+       // drawingView?.image = NSImage(size: self.view.bounds.size)
         
 
 

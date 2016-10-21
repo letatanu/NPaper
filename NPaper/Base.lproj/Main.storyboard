@@ -658,29 +658,22 @@
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
-                    <connections>
-                        <segue destination="S6x-dY-4M8" kind="relationship" relationship="window.shadowedContentViewController" id="dXu-67-56w"/>
-                    </connections>
                 </windowController>
+                <menuItem title="Item" id="HZA-7N-oBh">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Menu" id="Mjs-wD-dY3">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Menu" id="vvQ-yt-9ex">
+                        <items>
+                            <menuItem title="Item" id="juw-Fu-G7t">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
             </objects>
-            <point key="canvasLocation" x="-74" y="280"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="F6C-6o-G7b">
-            <objects>
-                <customObject id="1fN-XJ-fES" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="S6x-dY-4M8" customClass="ViewController" customModule="NPaper" customModuleProvider="target" sceneMemberID="viewController">
-                    <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4sa-PV-mYq" customClass="NDrawingView" customModule="NPaper" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="qwL-XE-iHR"/>
-                    </imageView>
-                    <connections>
-                        <outlet property="drawingView" destination="4sa-PV-mYq" id="aRc-i9-edi"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-59" y="692"/>
+            <point key="canvasLocation" x="74" y="254"/>
         </scene>
     </scenes>
 </document>
