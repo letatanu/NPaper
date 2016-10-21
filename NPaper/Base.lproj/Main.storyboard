@@ -658,6 +658,9 @@
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
+                    <connections>
+                        <segue destination="CJO-I3-KZ0" kind="relationship" relationship="window.shadowedContentViewController" id="HAg-kW-shx"/>
+                    </connections>
                 </windowController>
                 <menuItem title="Item" id="HZA-7N-oBh">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -674,6 +677,19 @@
                 </menuItem>
             </objects>
             <point key="canvasLocation" x="74" y="254"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nQn-bx-Edu">
+            <objects>
+                <viewController id="CJO-I3-KZ0" sceneMemberID="viewController">
+                    <view key="view" id="1QU-qu-9SW" customClass="Paper" customModule="NPaper" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="xey-K7-bmz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="42" y="688"/>
         </scene>
     </scenes>
 </document>

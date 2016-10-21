@@ -17,14 +17,14 @@ class Paper: NSView {
     var pts: [CGPoint] = [CGPoint(),CGPoint(), CGPoint(), CGPoint(), CGPoint()]
     var ctr: NSInteger = 0
     
-    var tempImage = NSImage()
+    var img = NSImage()
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
        // tempImage.drawInRect(dirtyRect)
         // Drawing code here.
-        NSColor.white.setFill()
-        NSRectFill(self.frame)
+      //  NSColor.white.setFill()
+      //  NSRectFill(self.frame)
         NSColor.black.set()
         path.stroke()
         path.lineWidth = lineWidth
@@ -74,10 +74,38 @@ class Paper: NSView {
         lastPoint = point
         path.line(to: lastPoint)
         needsDisplay = true
-       // drawBitMap()
-        
+        screenShot()
+        self.backgroundColor = NSColor.init(patternImage: img)
        ////
         path.removeAllPoints()
     }
 
+}
+extension NSView {
+    
+    var backgroundColor: NSColor? {
+        get {
+            if let colorRef = self.layer?.backgroundColor {
+                return NSColor(cgColor: colorRef)
+            } else {
+                return nil
+            }
+        }
+        set {
+            self.wantsLayer = true
+            self.layer?.backgroundColor = newValue?.cgColor
+        }
+    }
+}
+extension Paper
+{
+    func screenShot()
+    {
+        //let viewToCapture = self.window!.contentView!
+        var rep = self.bitmapImageRepForCachingDisplay(in: bounds)
+        self.cacheDisplay(in: bounds, to: rep!)
+        
+        img = NSImage(size: bounds.size)
+        img.addRepresentation(rep!)
+    }
 }
