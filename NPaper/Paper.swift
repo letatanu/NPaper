@@ -5,9 +5,8 @@
 //  Created by LE  Nhut on 6/25/16.
 //  Copyright © 2016 LE  Nhut. All rights reserved.
 //
-
+import AppKit
 import Cocoa
-
 class Paper: NSView {
     //@IBOutlet weak var _image: NSImage!
     var firstPoint = NSPoint.zero
@@ -16,8 +15,10 @@ class Paper: NSView {
     var lineWidth : CGFloat = 1
     var pts: [CGPoint] = [CGPoint(),CGPoint(), CGPoint(), CGPoint(), CGPoint()]
     var ctr: NSInteger = 0
-    
+    var oldFrame = NSZeroRect
     var img = NSImage()
+    var savingPath: String = ""
+    var name: String = ""
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -32,8 +33,9 @@ class Paper: NSView {
     }
     
     override func mouseDown(with theEvent: NSEvent) {
+        let frame_ = convert(frame, to: nil)
         var point = theEvent.locationInWindow
-        point.x -= frame.origin.x
+        point.x -= (frame_.origin.x - frame.origin.x)
         point.y -= frame.origin.y
         firstPoint = point
         path.move(to: firstPoint)
@@ -45,8 +47,12 @@ class Paper: NSView {
     
     override func mouseDragged(with theEvent: NSEvent) {
         
+        //var point = theEvent.locationInWindow
+        let frame_ = convert(frame, to: nil)
+        //NSLog("%.2f %.2f", frame_.origin.x,frame.origin.x)
+        
         var point = theEvent.locationInWindow
-        point.x -= frame.origin.x
+        point.x -= (frame_.origin.x - frame.origin.x)
         point.y -= frame.origin.y
         ctr += 1
         pts[ctr] = point
@@ -68,8 +74,9 @@ class Paper: NSView {
     
     override func mouseUp(with theEvent: NSEvent) {
         
+        let frame_ = convert(frame, to: nil)
         var point = theEvent.locationInWindow
-        point.x -= frame.origin.x
+        point.x -= (frame_.origin.x - frame.origin.x)
         point.y -= frame.origin.y
         lastPoint = point
         path.line(to: lastPoint)
@@ -102,10 +109,37 @@ extension Paper
     func screenShot()
     {
         //let viewToCapture = self.window!.contentView!
-        var rep = self.bitmapImageRepForCachingDisplay(in: bounds)
+        let rep = self.bitmapImageRepForCachingDisplay(in: bounds)
         self.cacheDisplay(in: bounds, to: rep!)
         
         img = NSImage(size: bounds.size)
         img.addRepresentation(rep!)
     }
+    
+    func save(at Path: String) -> Bool
+    {
+        
+        return true
+    }
+}
+extension NSImage
+{
+    var imagePDFRepresentation: Data?
+    {
+        var pdfData: Data? = nil
+        if let arr:[NSImageRep] = self.representations
+        {
+            for var rep in arr
+            {
+                if(rep is NSPDFImageRep)
+                {
+                    pdfData = (rep as! NSPDFImageRep).pdfRepresentation
+                    return pdfData
+                }
+            }
+        }
+        
+        return pdfData
+    }
+    
 }
