@@ -37,8 +37,6 @@ class ViewController: NSViewController {
 
     @IBAction func saveButtonClicked(sender: AnyObject)
     {
-        
-        
         let savePanel =  NSSavePanel()
         if(savePanel.runModal() == NSFileHandlingPanelOKButton)
         {
@@ -46,7 +44,7 @@ class ViewController: NSViewController {
             let name = savePanel.nameFieldStringValue
             if let saveURL = savePanel.url?.appendingPathExtension("pdf")
             {
-                ArrayOfPapperView.sharedInstance.output(for: 0, to: saveURL)
+                rightContainerController?.viewsArray.save(to: saveURL)
             }
            
             

@@ -776,34 +776,31 @@
         <scene sceneID="II9-ru-Trx">
             <objects>
                 <viewController id="kOv-ao-E4E" customClass="rightViewController" customModule="NPaper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="wf3-o2-UkZ">
-                        <rect key="frame" x="0.0" y="0.0" width="399" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yi8-2q-DbI">
-                                <rect key="frame" x="360" y="6" width="32" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="1aR-oc-ZrT"/>
-                                    <constraint firstAttribute="height" constant="32" id="fQR-lF-WWB"/>
-                                </constraints>
-                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xoH-d5-pJE">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <customView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="09Y-aT-myw">
-                                <rect key="frame" x="236" y="132" width="163" height="168"/>
-                            </customView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="yi8-2q-DbI" secondAttribute="trailing" constant="7" id="2Pf-wB-CWe"/>
-                            <constraint firstItem="09Y-aT-myw" firstAttribute="top" secondItem="wf3-o2-UkZ" secondAttribute="top" id="ORh-tp-mah"/>
-                            <constraint firstAttribute="trailing" secondItem="09Y-aT-myw" secondAttribute="trailing" id="hUu-Rt-hQx"/>
-                            <constraint firstAttribute="bottom" secondItem="yi8-2q-DbI" secondAttribute="bottom" constant="7" id="mJa-HF-AXf"/>
-                        </constraints>
-                    </view>
+                    <scrollView key="view" wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="CrO-Fs-Oss">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" id="KKQ-CQ-OWD">
+                            <rect key="frame" x="1" y="1" width="433" height="298"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KAl-RF-y4y">
+                                    <rect key="frame" x="0.0" y="0.0" width="418" height="283"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HJU-lJ-K1G">
+                            <rect key="frame" x="-100" y="-100" width="433" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="CIH-8Z-3jz">
+                            <rect key="frame" x="434" y="1" width="15" height="298"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                     <connections>
-                        <outlet property="testView" destination="09Y-aT-myw" id="iOq-Jm-Cm4"/>
+                        <outlet property="scrollView" destination="CrO-Fs-Oss" id="5mK-bz-VDP"/>
                     </connections>
                 </viewController>
                 <customObject id="DjW-lg-bWV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -928,7 +925,4 @@
             <point key="canvasLocation" x="-548" y="1173"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
-    </resources>
 </document>

@@ -7,6 +7,13 @@
 //
 import AppKit
 import Cocoa
+
+protocol PaperDelegate: class {
+    func newFrame(sender : NSRect)
+    func newPoint(send: CGPoint)
+    
+}
+
 class Paper: NSView {
     //@IBOutlet weak var _image: NSImage!
     var firstPoint = NSPoint.zero
@@ -17,6 +24,12 @@ class Paper: NSView {
     var ctr: NSInteger = 0
     var oldFrame = NSZeroRect
     var img = NSImage()
+    var scrollPoint = CGPoint()
+    
+    
+    weak var delegate: PaperDelegate?
+    
+    
     var savingPath: String = ""
     var name: String = ""
     
@@ -36,7 +49,7 @@ class Paper: NSView {
         let frame_ = convert(frame, to: nil)
         var point = theEvent.locationInWindow
         point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= frame.origin.y
+        point.y -= (frame.origin.y - scrollPoint.y)
         firstPoint = point
         path.move(to: firstPoint)
         
@@ -53,7 +66,7 @@ class Paper: NSView {
         
         var point = theEvent.locationInWindow
         point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= frame.origin.y
+        point.y -= (frame.origin.y - scrollPoint.y)
         ctr += 1
         pts[ctr] = point
         if (ctr == 4)
@@ -77,7 +90,7 @@ class Paper: NSView {
         let frame_ = convert(frame, to: nil)
         var point = theEvent.locationInWindow
         point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= frame.origin.y
+        point.y -= (frame.origin.y - scrollPoint.y)
         lastPoint = point
         path.line(to: lastPoint)
         needsDisplay = true
@@ -121,6 +134,7 @@ extension Paper
         
         return true
     }
+    
 }
 extension NSImage
 {
