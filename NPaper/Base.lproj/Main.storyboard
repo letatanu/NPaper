@@ -777,14 +777,14 @@
             <objects>
                 <viewController id="kOv-ao-E4E" customClass="rightViewController" customModule="NPaper" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="CrO-Fs-Oss">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="526" height="551"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" id="KKQ-CQ-OWD">
-                            <rect key="frame" x="1" y="1" width="433" height="298"/>
+                            <rect key="frame" x="1" y="1" width="509" height="549"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KAl-RF-y4y">
-                                    <rect key="frame" x="0.0" y="0.0" width="418" height="283"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="494" height="534"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </subviews>
@@ -795,17 +795,17 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="CIH-8Z-3jz">
-                            <rect key="frame" x="434" y="1" width="15" height="298"/>
+                            <rect key="frame" x="510" y="1" width="15" height="549"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <connections>
-                        <outlet property="scrollView" destination="CrO-Fs-Oss" id="5mK-bz-VDP"/>
+                        <outlet property="scrollView" destination="CrO-Fs-Oss" id="p7J-Xy-JeN"/>
                     </connections>
                 </viewController>
                 <customObject id="DjW-lg-bWV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153.5" y="1224"/>
+            <point key="canvasLocation" x="191" y="1349.5"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="Gdf-bw-68a">

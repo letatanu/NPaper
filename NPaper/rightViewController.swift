@@ -16,16 +16,17 @@ class rightViewController: NSViewController
 {
     var viewsArray = [Paper]()
    
+    
     @IBOutlet var scrollView: NSScrollView!
-    
-    
     
     
     override func viewDidLoad()
     {
      //   self.ScrollView.isFlipped = true
-        let frame = self.scrollView.contentView.frame
-        self.scrollView.documentView?.frame = frame
+
+        let frame_ = self.scrollView.convert(self.scrollView.frame, to: nil)
+        self.scrollView.documentView? = NSView(frame: frame_)
+        //self.scrollView.documentView?.frame = frame
         
         //set notification when nsscrollview is scrolled
         self.scrollView.contentView.postsBoundsChangedNotifications = true
@@ -33,22 +34,18 @@ class rightViewController: NSViewController
         
         
         //test with 8 papers
-        let n = 8
+        let n = 4
         for _ in 0...n
         {
-            viewsArray.addStyle1(in: self.scrollView.documentView!)
+            viewsArray.addStyle1(in: self.scrollView.documentView!, with: frame_)
         }
         
-        
-        
-        
-       // viewsArray.addStyle1(in: self.view)
     }
     
     override func scrollWheel(with event: NSEvent) {
         let visibleRect = self.scrollView.contentView.documentVisibleRect;
         NSLog("Visible rect:%s", NSStringFromRect(visibleRect));
-        let currentScrollPosition = visibleRect.origin;
+       // let currentScrollPosition = visibleRect.origin;
     }
     
     //set new point for papers when nsscroll is scrolled
@@ -75,19 +72,20 @@ extension Array where Element: Paper
     
     mutating func add(frame: NSRect) -> Bool
     {
-        var newPaper = Paper()
+        //
+        let newPaper = Paper()
         newPaper.frame = frame
         self.append(newPaper as! Element)
         return true
     }
-    mutating func addStyle1(in View: NSView) -> Bool
+    mutating func addStyle1(in View: NSView, with rect: NSRect) -> Bool
     {
         let bound: CGFloat = 7
         let newPaper = Paper()
         newPaper.backgroundColor = NSColor.white
         if (self.count == 0)
         {
-            let frame = View.frame
+            let frame = rect
             newPaper.frame = NSRect(x: frame.origin.x + bound, y: frame.origin.y + bound, width: frame.size.width - 2*bound, height: frame.size.height - bound)
         }
         else
@@ -113,7 +111,7 @@ extension Array where Element: Paper
             let bound: CGFloat = 7
             let newPaper = Paper()
             newPaper.backgroundColor = NSColor.white
-            let frame = View.frame
+            let frame = view_.frame
             newPaper.frame = NSRect(x: frame.origin.x + bound, y: frame.origin.y + bound, width: frame.size.width - 2*bound, height: frame.size.height - 2*bound)
             View.addSubview(newPaper)
             self.append(newPaper as! Element)
@@ -161,26 +159,28 @@ extension Array where Element: Paper
         return writeContext!
     }
     
-    mutating func convertToPDF() -> [Data]
+    mutating func convertToPDF() -> [NSData]
     {
-        var result = [Data]()
+        var result = [NSData]()
         for ele in self
-        {
+        { /*
+            let rep = ele.bitmapImageRepForCachingDisplay(in: ele.bounds)
+            ele.cacheDisplay(in: ele.bounds, to: rep!)
+            let img = NSImage(size: ele.bounds.size)
+            img.addRepresentation(rep!)
+            let imgView: NSImageView = NSImageView(frame: ele.bounds)
+            imgView.image = img
+            */
+            let imgView: NSImageView = NSImageView(frame: ele.bounds)
+            imgView.image = ele.img
             
-            //  NSLog("%s\t" , *ele.img)
-            if let pdfData: Data = ele.dataWithPDF(inside: ele.bounds)
+            if let pdfData: NSData = imgView.dataWithPDF(inside: imgView.frame) as NSData?
             {
                 result.append(pdfData)
             }
         }
         return result
         
-    }
-    
-    mutating func output(to URL: String) -> Bool
-    {
-        var error = false;
-        return error
     }
     
     mutating func getData(fromPdf url: String) -> Bool

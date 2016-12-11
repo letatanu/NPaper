@@ -98,6 +98,8 @@ class Paper: NSView {
         self.backgroundColor = NSColor.init(patternImage: img)
        ////
         path.removeAllPoints()
+        firstPoint = NSPoint.zero
+        lastPoint = NSPoint.zero
     }
 
 }
