@@ -27,6 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class windowController: NSWindowController
 {
-    
+
 }
 

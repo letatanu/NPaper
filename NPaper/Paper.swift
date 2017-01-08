@@ -16,17 +16,18 @@ protocol PaperDelegate: class {
 
 class Paper: NSView {
     //@IBOutlet weak var _image: NSImage!
-    var firstPoint = NSPoint.zero
-    var lastPoint = NSPoint.zero
-    var path = NSBezierPath()
+    
     var lineWidth : CGFloat = 1
     var pts: [CGPoint] = [CGPoint(),CGPoint(), CGPoint(), CGPoint(), CGPoint()]
     var ctr: NSInteger = 0
-    var oldFrame = NSZeroRect
+  //  var oldFrame = NSZeroRect
     var img = NSImage()
     var scrollPoint = CGPoint()
+    var color = NSColor.black
     
-    
+    private var firstPoint = NSPoint.zero
+    private var lastPoint = NSPoint.zero
+    private var path = NSBezierPath()
     weak var delegate: PaperDelegate?
     
     
@@ -39,7 +40,7 @@ class Paper: NSView {
         // Drawing code here.
       //  NSColor.white.setFill()
       //  NSRectFill(self.frame)
-        NSColor.black.set()
+        color.set()
         path.stroke()
         path.lineWidth = lineWidth
         

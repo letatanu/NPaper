@@ -12,53 +12,40 @@ import Cocoa
 
 
 
-class rightViewController: NSViewController
+class RightView: NSScrollView, NSWindowDelegate
 {
     var viewsArray = [Paper]()
    
+    var color : NSColor = NSColor.black
     
-    @IBOutlet var scrollView: NSScrollView!
-    
-    
-    override func viewDidLoad()
-    {
-     //   self.ScrollView.isFlipped = true
-
-        let frame_ = self.scrollView.convert(self.scrollView.frame, to: nil)
-        self.scrollView.documentView? = NSView(frame: frame_)
-        //self.scrollView.documentView?.frame = frame
-        
-        //set notification when nsscrollview is scrolled
-        self.scrollView.contentView.postsBoundsChangedNotifications = true
-        NotificationCenter.default.addObserver(self, selector: #selector(boundsDidChangeNotification), name: NSNotification.Name.NSViewBoundsDidChange, object: self.scrollView.contentView)
-        
-        
-        //test with 8 papers
-        let n = 4
-        for _ in 0...n
-        {
-            viewsArray.addStyle1(in: self.scrollView.documentView!, with: frame_)
-        }
-        
-    }
     
     override func scrollWheel(with event: NSEvent) {
-        let visibleRect = self.scrollView.contentView.documentVisibleRect;
+        let visibleRect = self.contentView.documentVisibleRect;
         NSLog("Visible rect:%s", NSStringFromRect(visibleRect));
        // let currentScrollPosition = visibleRect.origin;
     }
     
     //set new point for papers when nsscroll is scrolled
-    func boundsDidChangeNotification(notification: NSNotification)
+    
+    public func changePathColor(to color: NSColor)
     {
         for ele in viewsArray
         {
-            ele.scrollPoint = self.scrollView.documentVisibleRect.origin
+            ele.color = color
         }
     }
     
-
+    public func changePathSize(to size: CGFloat)
+    {
+        for ele in viewsArray
+        {
+            ele.lineWidth = size
+        }
+    }
+    
+    
 }
+
 
 //// The array of paper views
 extension Array where Element: Paper
@@ -80,21 +67,23 @@ extension Array where Element: Paper
     }
     mutating func addStyle1(in View: NSView, with rect: NSRect) -> Bool
     {
-        let bound: CGFloat = 7
+        let verticalBound: CGFloat = 0
+        let horizontalBound: CGFloat = 2
         let newPaper = Paper()
         newPaper.backgroundColor = NSColor.white
         if (self.count == 0)
         {
             let frame = rect
-            newPaper.frame = NSRect(x: frame.origin.x + bound, y: frame.origin.y + bound, width: frame.size.width - 2*bound, height: frame.size.height - bound)
+            newPaper.frame = NSRect(x: frame.origin.x + verticalBound, y: frame.origin.y + horizontalBound, width: frame.size.width - 2*verticalBound, height: frame.size.height - horizontalBound)
         }
         else
         {
             if let frame = self.last?.frame
             {
-                newPaper.frame = NSRect(x: frame.origin.x, y: frame.origin.y + frame.size.height + bound, width: frame.size.width, height: frame.size.height)
                 let frame_ = View.frame
-                View.frame = NSMakeRect(frame_.origin.x, frame_.origin.y, frame_.size.width, frame_.size.height + frame.size.height + 2*bound)
+                View.frame = NSMakeRect(frame_.origin.x, frame_.origin.y, frame_.size.width, frame_.size.height + frame.size.height + 2*horizontalBound)
+                newPaper.frame = NSRect(x: frame.origin.x, y: frame.origin.y + frame.size.height + horizontalBound, width: frame.size.width, height: frame.size.height)
+                
             }
             else {
                 return false
@@ -104,6 +93,26 @@ extension Array where Element: Paper
         self.append(newPaper as! Element)
         return true
     }
+    /*
+    mutating func resizeAllPapers(to frameSize: NSSize)
+    {
+        let verticalBound: CGFloat = 0
+        let horizontalBound: CGFloat = 2
+
+        let size = self.count
+        for i in 0...size
+        {
+            let curView = self[i]
+            if i == 0
+            {
+                curView.frame = NSRect(x: frameSize.origin.x + verticalBound, y: frameSize.origin.y + horizontalBound, width: frameSize.size.width - 2*verticalBound, height: frameSize.size.height - horizontalBound)
+            }
+            else {
+                let preView = self[i-1]
+            }
+        }
+    }*/
+    
     mutating func addStyle2(in View: NSView) -> Bool
     {
         if let view_: NSView = View

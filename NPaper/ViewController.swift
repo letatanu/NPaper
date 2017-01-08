@@ -12,17 +12,42 @@ class ViewController: NSViewController {
   //@IBOutlet weak var drawingView: NDrawingView?
     
     @IBOutlet weak var rightContainerView: NSView!
-    var rightContainerController : rightViewController?
+   
     var leftContainerController: leftViewController?
     
+    @IBOutlet weak var rightView: RightView!
     @IBOutlet weak var leftContainerView: NSStackView!
+    @IBOutlet weak var penSize: NSPopUpButton!
+    @IBOutlet weak var colorTable: NSPopUpButton!
+    
+    @IBOutlet weak var Eraser: NSButton!
+    @IBOutlet weak var sizeSlider: NSSlider!
+    
+    @IBOutlet weak var visualizingPenSize: NSView!
+    
+    private var isViewMode: Bool = false
     
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        let frame_ = self.rightView.frame
+        self.rightView.documentView? = NSView(frame: frame_)
+        //self.scrollView.documentView?.frame = frame
         
+        //set notification when nsscrollview is scrolled
+        self.rightView.contentView.postsBoundsChangedNotifications = true
+        NotificationCenter.default.addObserver(self, selector: #selector(boundsDidChangeNotification), name: NSNotification.Name.NSViewBoundsDidChange, object: self.rightView.contentView)
+        
+        
+        //test with 8 papers
+        let n = 4
+        for _ in 0...n
+        {
+            self.rightView.viewsArray.addStyle1(in: self.rightView.documentView!, with: frame_)
+        }
+
         // Do any additional setup after loading the view.
     }
 
@@ -34,7 +59,43 @@ class ViewController: NSViewController {
     override func viewWillAppear() {
         
     }
+    
+    func boundsDidChangeNotification(notification: NSNotification)
+    {
+        for ele in self.rightView.viewsArray
+        {
+            ele.scrollPoint = self.rightView.documentVisibleRect.origin
+        }
+    }
 
+    
+
+    @IBAction func changedSize(_ sender: AnyObject) {
+        let size = sizeSlider.floatValue
+        
+        
+        rightView.changePathSize(to: CGFloat.init(size))
+    }
+
+//Change to View mode or change to edit mode
+    @IBAction func isViewMode(_ sender: AnyObject) {
+        isViewMode = !isViewMode
+        //some code here
+        
+    }  
+    
+// Eraser
+    @IBAction func Eraser(_ sender: AnyObject) {
+        let color = NSColor.white
+        rightView.changePathColor(to: color)
+
+    }
+    
+    @IBAction func Pen(_ sender: AnyObject) {
+        let color = NSColor.black
+        rightView.changePathColor(to: color)
+    }
+    
     @IBAction func saveButtonClicked(sender: AnyObject)
     {
         let savePanel =  NSSavePanel()
@@ -44,7 +105,7 @@ class ViewController: NSViewController {
             let name = savePanel.nameFieldStringValue
             if let saveURL = savePanel.url?.appendingPathExtension("pdf")
             {
-                rightContainerController?.viewsArray.save(to: saveURL)
+                rightView.viewsArray.save(to: saveURL)
             }
            
             
@@ -66,7 +127,7 @@ class ViewController: NSViewController {
         
         
     }
-    
+    /*
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if segue.identifier == "rightSegue"
         {
@@ -78,8 +139,10 @@ class ViewController: NSViewController {
         }
         
     }
-
+ 
+*/
 }
+ 
 /*
 extension NSViewController
 {
