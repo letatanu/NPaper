@@ -688,17 +688,17 @@
             <objects>
                 <viewController id="CJO-I3-KZ0" customClass="ViewController" customModule="NPaper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1QU-qu-9SW">
-                        <rect key="frame" x="0.0" y="0.0" width="774" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="774" height="305"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lG-vs-snT" customClass="RightView" customModule="NPaper" customModuleProvider="target">
-                                <rect key="frame" x="140" y="0.0" width="634" height="260"/>
+                                <rect key="frame" x="140" y="25" width="634" height="240"/>
                                 <clipView key="contentView" id="ZnU-Li-3i3">
-                                    <rect key="frame" x="1" y="1" width="617" height="258"/>
+                                    <rect key="frame" x="1" y="1" width="617" height="238"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NF7-vQ-5nv">
-                                            <rect key="frame" x="0.0" y="0.0" width="602" height="243"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="602" height="223"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                     </subviews>
@@ -709,18 +709,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tbL-68-ogb">
-                                    <rect key="frame" x="618" y="1" width="15" height="258"/>
+                                    <rect key="frame" x="618" y="1" width="15" height="238"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="90B-Lm-Zp4">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="260"/>
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="265"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="uFb-TU-tA0"/>
                                 </constraints>
                             </stackView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugQ-Sj-e2V">
-                                <rect key="frame" x="15" y="265" width="76" height="28"/>
+                                <rect key="frame" x="15" y="270" width="76" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="ViewMode" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cfD-Ph-P31">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -731,7 +731,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFC-pc-fbf">
-                                <rect key="frame" x="275" y="265" width="79" height="28"/>
+                                <rect key="frame" x="275" y="270" width="79" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Eraser" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zYQ-xc-sf3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -742,12 +742,12 @@
                                 </connections>
                             </button>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7S-bK-Z17">
-                                <rect key="frame" x="417" y="265" width="44" height="23"/>
+                                <rect key="frame" x="417" y="270" width="44" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </colorWell>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XOW-gS-zhd">
-                                <rect key="frame" x="192" y="268" width="77" height="22"/>
+                                <rect key="frame" x="192" y="273" width="77" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="J2g-SZ-8kW" id="8JN-gF-nxv">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -762,7 +762,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-5N-CP1">
-                                <rect key="frame" x="106" y="268" width="77" height="22"/>
+                                <rect key="frame" x="106" y="273" width="77" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="cmc-dh-c1u" id="Yku-we-Hdo">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -777,7 +777,7 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lYL-kp-JDl">
-                                <rect key="frame" x="469" y="270" width="144" height="15"/>
+                                <rect key="frame" x="469" y="275" width="144" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" controlSize="small" continuous="YES" state="on" alignment="left" maxValue="50" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="Gsz-cZ-hAn">
                                     <connections>
@@ -786,7 +786,7 @@
                                 </sliderCell>
                             </slider>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5T9-AO-9LL">
-                                <rect key="frame" x="350" y="264" width="64" height="28"/>
+                                <rect key="frame" x="350" y="269" width="64" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Pen" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XGP-BE-UdT">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -797,18 +797,34 @@
                                 </connections>
                             </button>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAE-UW-EvP" customClass="VisualizingPenSize" customModule="NPaper" customModuleProvider="target">
-                                <rect key="frame" x="645" y="265" width="30" height="30"/>
+                                <rect key="frame" x="645" y="270" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BfM-DF-d0H">
+                                <rect key="frame" x="680" y="4" width="80" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="dJ6-wI-5WO"/>
+                                    <constraint firstAttribute="height" constant="16" id="v7S-dL-7uL"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundRect" title="Add" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="47i-dW-EGo">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addNewPage:" target="CJO-I3-KZ0" id="avm-bv-IKz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="8lG-vs-snT" firstAttribute="leading" secondItem="90B-Lm-Zp4" secondAttribute="trailing" id="7ZQ-EF-K5W"/>
                             <constraint firstItem="90B-Lm-Zp4" firstAttribute="top" secondItem="1QU-qu-9SW" secondAttribute="top" constant="40" id="EK4-hp-6AE"/>
-                            <constraint firstItem="8lG-vs-snT" firstAttribute="leading" secondItem="90B-Lm-Zp4" secondAttribute="trailing" id="ETm-T5-4si"/>
+                            <constraint firstAttribute="bottom" secondItem="8lG-vs-snT" secondAttribute="bottom" constant="25" id="IpS-tB-FRb"/>
                             <constraint firstItem="90B-Lm-Zp4" firstAttribute="leading" secondItem="1QU-qu-9SW" secondAttribute="leading" id="auS-rS-YUp"/>
-                            <constraint firstAttribute="bottom" secondItem="8lG-vs-snT" secondAttribute="bottom" id="htX-0x-1IN"/>
+                            <constraint firstItem="8lG-vs-snT" firstAttribute="top" secondItem="1QU-qu-9SW" secondAttribute="top" constant="40" id="c7Y-pb-oQO"/>
+                            <constraint firstAttribute="trailing" secondItem="8lG-vs-snT" secondAttribute="trailing" id="dhl-oN-TFI"/>
+                            <constraint firstAttribute="bottom" secondItem="BfM-DF-d0H" secondAttribute="bottom" constant="5" id="h0F-Im-yp4"/>
+                            <constraint firstAttribute="trailing" secondItem="BfM-DF-d0H" secondAttribute="trailing" constant="14" id="jfY-Wb-Ka6"/>
                             <constraint firstAttribute="bottom" secondItem="90B-Lm-Zp4" secondAttribute="bottom" id="kXS-9O-qOm"/>
-                            <constraint firstItem="8lG-vs-snT" firstAttribute="top" secondItem="1QU-qu-9SW" secondAttribute="top" constant="40" id="ncx-pc-3XI"/>
-                            <constraint firstAttribute="trailing" secondItem="8lG-vs-snT" secondAttribute="trailing" id="xWv-1l-gLc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -825,7 +841,7 @@
                 </viewController>
                 <customObject id="xey-K7-bmz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-342" y="833"/>
+            <point key="canvasLocation" x="31" y="758.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="wad-W7-tcc">

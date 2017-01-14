@@ -16,11 +16,15 @@ protocol PaperDelegate: class {
 
 class Paper: NSView {
     //@IBOutlet weak var _image: NSImage!
+    let diff = CGFloat(25)
+    
+    let savingAfterTimes = 5
+    var countTimes = 0
     
     var lineWidth : CGFloat = 1
     var pts: [CGPoint] = [CGPoint(),CGPoint(), CGPoint(), CGPoint(), CGPoint()]
     var ctr: NSInteger = 0
-  //  var oldFrame = NSZeroRect
+    //  var oldFrame = NSZeroRect
     var img = NSImage()
     var scrollPoint = CGPoint()
     var color = NSColor.black
@@ -36,21 +40,31 @@ class Paper: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-       // tempImage.drawInRect(dirtyRect)
+        // tempImage.drawInRect(dirtyRect)
         // Drawing code here.
-      //  NSColor.white.setFill()
-      //  NSRectFill(self.frame)
+        //  NSColor.white.setFill()
+        //  NSRectFill(self.frame)
+       /* let cursorSize = NSMakeSize(20, 20)
+        let curImg = NSImage(named: "cursor.png")
+        curImg?.size = cursorSize
+        let cursor = NSCursor.init(image: curImg!, hotSpot: NSMakePoint(cursorSize.width/2.0, cursorSize.height/2.0))
+        cursor.set()
+        */
         color.set()
         path.stroke()
         path.lineWidth = lineWidth
         
+        
     }
     
     override func mouseDown(with theEvent: NSEvent) {
+       // let y = theEvent.keyCode
+       // NSLog("\(theEvent.buttonNumber)")
         let frame_ = convert(frame, to: nil)
+        countTimes += 1
         var point = theEvent.locationInWindow
         point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= (frame.origin.y - scrollPoint.y)
+        point.y -= (frame.origin.y - scrollPoint.y + diff)
         firstPoint = point
         path.move(to: firstPoint)
         
@@ -64,10 +78,9 @@ class Paper: NSView {
         //var point = theEvent.locationInWindow
         let frame_ = convert(frame, to: nil)
         //NSLog("%.2f %.2f", frame_.origin.x,frame.origin.x)
-        
         var point = theEvent.locationInWindow
         point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= (frame.origin.y - scrollPoint.y)
+        point.y -= (frame.origin.y - scrollPoint.y + diff)
         ctr += 1
         pts[ctr] = point
         if (ctr == 4)
@@ -83,26 +96,31 @@ class Paper: NSView {
             ctr = 1
         }
         lastPoint = point
-         //NSLog("(%.2f,%.2f)", point.x,point.y)
+        //NSLog("(%.2f,%.2f)", point.x,point.y)
     }
     
     override func mouseUp(with theEvent: NSEvent) {
-        
         let frame_ = convert(frame, to: nil)
         var point = theEvent.locationInWindow
         point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= (frame.origin.y - scrollPoint.y)
+        point.y -= (frame.origin.y - scrollPoint.y + diff)
         lastPoint = point
         path.line(to: lastPoint)
         needsDisplay = true
-        screenShot()
-        self.backgroundColor = NSColor.init(patternImage: img)
-       ////
-        path.removeAllPoints()
+        if countTimes == savingAfterTimes
+        {
+            screenShot()
+            self.backgroundColor = NSColor.init(patternImage: img)
+            ////
+            path.removeAllPoints()
+            countTimes = 0
+            
+        }
         firstPoint = NSPoint.zero
         lastPoint = NSPoint.zero
     }
-
+   
+    
 }
 extension NSView {
     

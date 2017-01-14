@@ -15,6 +15,7 @@
 		061789021D1F573700E30172 /* NPaperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061789011D1F573700E30172 /* NPaperUITests.swift */; };
 		061789101D1F57A500E30172 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617890F1D1F57A500E30172 /* Paper.swift */; };
 		0624FA671DC525D70044C9BB /* leftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0624FA661DC525D70044C9BB /* leftViewController.swift */; };
+		063550DA1E235C76007E3A95 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063550D91E235C76007E3A95 /* Extensions.swift */; };
 		064340C31DC43242001192F8 /* rightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064340C21DC43242001192F8 /* rightView.swift */; };
 		065615551DD69EC300156923 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065615541DD69EC300156923 /* testViewController.swift */; };
 		065615571DD6B1FA00156923 /* ArrayOfPapperViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065615561DD6B1FA00156923 /* ArrayOfPapperViews.swift */; };
@@ -23,6 +24,8 @@
 		06674FF91DCD083700A7695C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06674FF61DCD083700A7695C /* RealmSwift.framework */; };
 		06674FFA1DCD083700A7695C /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06674FF61DCD083700A7695C /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06827B7D1E0A112100B6DC5D /* VisualizingPenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06827B7C1E0A112100B6DC5D /* VisualizingPenSize.swift */; };
+		06A92B981E2A165A0045B783 /* cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 06A92B971E2A165A0045B783 /* cursor.png */; };
+		06A92B991E2A16A10045B783 /* cursor.png in Sources */ = {isa = PBXBuildFile; fileRef = 06A92B971E2A165A0045B783 /* cursor.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,7 @@
 		061789031D1F573700E30172 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0617890F1D1F57A500E30172 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paper.swift; sourceTree = "<group>"; };
 		0624FA661DC525D70044C9BB /* leftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leftViewController.swift; sourceTree = "<group>"; };
+		063550D91E235C76007E3A95 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		064340C21DC43242001192F8 /* rightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rightView.swift; sourceTree = "<group>"; };
 		065615541DD69EC300156923 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		065615561DD6B1FA00156923 /* ArrayOfPapperViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayOfPapperViews.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 		06674FF51DCD083700A7695C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		06674FF61DCD083700A7695C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		06827B7C1E0A112100B6DC5D /* VisualizingPenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizingPenSize.swift; sourceTree = "<group>"; };
+		06A92B971E2A165A0045B783 /* cursor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cursor.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,7 @@
 		061788D81D1F573700E30172 = {
 			isa = PBXGroup;
 			children = (
+				06A92B901E29EBB20045B783 /* data */,
 				06674FF51DCD083700A7695C /* Realm.framework */,
 				06674FF61DCD083700A7695C /* RealmSwift.framework */,
 				061788E31D1F573700E30172 /* NPaper */,
@@ -135,6 +141,7 @@
 		061788E31D1F573700E30172 /* NPaper */ = {
 			isa = PBXGroup;
 			children = (
+				06A92B971E2A165A0045B783 /* cursor.png */,
 				061788E41D1F573700E30172 /* AppDelegate.swift */,
 				061788E61D1F573700E30172 /* ViewController.swift */,
 				061788E81D1F573700E30172 /* Assets.xcassets */,
@@ -146,6 +153,7 @@
 				0617890F1D1F57A500E30172 /* Paper.swift */,
 				065615561DD6B1FA00156923 /* ArrayOfPapperViews.swift */,
 				06827B7C1E0A112100B6DC5D /* VisualizingPenSize.swift */,
+				063550D91E235C76007E3A95 /* Extensions.swift */,
 			);
 			path = NPaper;
 			sourceTree = "<group>";
@@ -175,6 +183,13 @@
 				06674FF21DCD07FF00A7695C /* RealmSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06A92B901E29EBB20045B783 /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,7 +261,9 @@
 				TargetAttributes = {
 					061788E01D1F573700E30172 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = V8TND6N9Y7;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					061788F11D1F573700E30172 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -286,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				061788E91D1F573700E30172 /* Assets.xcassets in Resources */,
+				06A92B981E2A165A0045B783 /* cursor.png in Resources */,
 				061788EC1D1F573700E30172 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,7 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A92B991E2A16A10045B783 /* cursor.png in Sources */,
 				065615551DD69EC300156923 /* testViewController.swift in Sources */,
+				063550DA1E235C76007E3A95 /* Extensions.swift in Sources */,
 				061788E71D1F573700E30172 /* ViewController.swift in Sources */,
 				0624FA671DC525D70044C9BB /* leftViewController.swift in Sources */,
 				064340C31DC43242001192F8 /* rightView.swift in Sources */,
@@ -451,7 +471,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V8TND6N9Y7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -469,7 +491,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V8TND6N9Y7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

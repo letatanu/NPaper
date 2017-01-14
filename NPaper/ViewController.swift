@@ -28,26 +28,34 @@ class ViewController: NSViewController {
     private var isViewMode: Bool = false
     
     
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        let frame_ = self.rightView.frame
-        self.rightView.documentView? = NSView(frame: frame_)
-        //self.scrollView.documentView?.frame = frame
+        
+       // var frame_ = self.rightView.bounds
+        //let frame_ = self.rightView.documentView?.frame
+        
+        let frame_ = NSMakeRect(0, 0, 792, 1122)
+        self.rightView.documentView = NSView(frame: frame_)
         
         //set notification when nsscrollview is scrolled
         self.rightView.contentView.postsBoundsChangedNotifications = true
         NotificationCenter.default.addObserver(self, selector: #selector(boundsDidChangeNotification), name: NSNotification.Name.NSViewBoundsDidChange, object: self.rightView.contentView)
         
+        //rightView.addCursorRect(rightView.frame, cursor: cursor_)
         
-        //test with 8 papers
-        let n = 4
-        for _ in 0...n
-        {
-            self.rightView.viewsArray.addStyle1(in: self.rightView.documentView!, with: frame_)
+        self.rightView.viewsArray.addStyle1(in: self.rightView.documentView!, with: frame_)
+        /*
+        NSEvent.addLocalMonitorForEvents(matching: .keyUp) { (aEvent) -> NSEvent? in
+            self.keyUp(with: aEvent)
+            return aEvent
         }
-
+        
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (aEvent) -> NSEvent? in
+            self.keyDown(with: aEvent)
+            return aEvent
+        }*/
         // Do any additional setup after loading the view.
     }
 
@@ -59,7 +67,12 @@ class ViewController: NSViewController {
     override func viewWillAppear() {
         
     }
-    
+  /*
+    override func viewDidLayout() {
+        let frame_ = self.rightView.bounds
+        self.rightView.viewsArray.resizeAllPapers(in: self.rightView.documentView!, with: frame_)
+    }
+    */
     func boundsDidChangeNotification(notification: NSNotification)
     {
         for ele in self.rightView.viewsArray
@@ -68,7 +81,13 @@ class ViewController: NSViewController {
         }
     }
 
-    
+    @IBAction func addNewPage(_ sender: AnyObject) {
+        
+        let frame_ = NSMakeRect(0, 0, 792, 1122)
+        self.rightView.viewsArray.addStyle1(in: self.rightView.documentView!, with: frame_)
+    }
+   
+   
 
     @IBAction func changedSize(_ sender: AnyObject) {
         let size = sizeSlider.floatValue
@@ -140,8 +159,26 @@ class ViewController: NSViewController {
         
     }
  
-*/
+*//*
+    override func mouseEntered(with event: NSEvent) {
+        let cursorSize = NSMakeSize(10, 10)
+        let cursorImg = NSImage(size: cursorSize)
+        cursorImg.lockFocus()
+        NSColor.red.setFill()
+        NSBezierPath.fill(NSMakeRect(0, 0, cursorSize.width, cursorSize.height))
+        cursorImg.unlockFocus()
+        let cursor = NSCursor(image: cursorImg, hotSpot: NSMakePoint(cursorSize.width/2, cursorSize.height/2))
+        cursor.setOnMouseEntered(true)
+        //self.addTrackingRect(self.bounds, owner: cursor, userData: nil, assumeInside: true)
+    }*/
+    
+    override func keyDown(with event: NSEvent) {
+        NSLog("%d \n", event.keyCode)
+    }
+  
 }
+
+
  
 /*
 extension NSViewController
