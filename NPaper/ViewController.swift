@@ -198,9 +198,15 @@ class ViewController: NSViewController {
                         if let pagePdf = pdfDocument?.page(at: pdfIndex)
                         {
                             let data = pagePdf.dataRepresentation
-                            if let img = NSImage(data: data)
+                            if let tmp = NSImage(data: data)
                             {
                                 let paper = Paper()
+                                let img = NSImage(size: frame_.size)
+                                img.lockFocus()
+                                NSColor.white.set()
+                                NSBezierPath.fill(frame_)
+                                tmp.draw(at: NSZeroPoint, from: NSZeroRect, operation: NSCompositeSourceOver, fraction: 1.0)
+                                img.unlockFocus()
                                 paper.img = img
                                 imgArray.append(paper)
                             }

@@ -69,11 +69,11 @@ extension Array where Element: Paper
 
     mutating func addPaper(at frame: NSRect, with image: NSImage, on view: NSView) -> Bool
     {
+        image.backgroundColor = NSColor.white
         if let View : NSView = view {
             let verticalBound: CGFloat = 0
             let horizontalBound: CGFloat = 2
             let newPaper = Paper()
-            newPaper.backgroundColor = NSColor.white
             if (self.count == 0)
             {
                 newPaper.frame = NSRect(x: frame.origin.x + verticalBound, y: frame.origin.y + horizontalBound, width: frame.size.width, height: frame.size.height)
