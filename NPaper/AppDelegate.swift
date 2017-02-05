@@ -11,7 +11,13 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    @IBAction func NewClicked(_ sender: AnyObject) {
+        
+    }
+  
+   
+    
+   
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         

@@ -26,40 +26,97 @@ extension Array where Element: Paper
         self.append(newPaper as! Element)
         return true
     }
-    mutating func addStyle1(in View: NSView, with rect: NSRect) -> Bool
+    mutating func addStyle1(in view: NSView, with rect: NSRect) -> Bool
     {
-        let verticalBound: CGFloat = 0
-        let horizontalBound: CGFloat = 2
-        let newPaper = Paper()
-        let frame = rect
-        newPaper.backgroundColor = NSColor.white
-        if (self.count == 0)
-        {
-            //let frame = rect
-            newPaper.frame = NSRect(x: frame.origin.x + verticalBound, y: frame.origin.y + horizontalBound, width: frame.size.width, height: frame.size.height)
-           
+        if let View : NSView = view {
+            let verticalBound: CGFloat = 0
+            let horizontalBound: CGFloat = 2
+            let newPaper = Paper()
+            let frame = rect
+            newPaper.backgroundColor = NSColor.white
+            if (self.count == 0)
+            {
+                //let frame = rect
+                newPaper.frame = NSRect(x: frame.origin.x + verticalBound, y: frame.origin.y + horizontalBound, width: frame.size.width, height: frame.size.height)
+                
+                
+            }
+            else
+            {
+                let frame_ = View.frame
+                View.frame.size = NSMakeSize(frame_.size.width, frame_.size.height + frame.size.height + 2*horizontalBound)
+                for ele in self
+                {
+                    let selfFrame = ele.frame
+                    ele.frame.origin = NSMakePoint(selfFrame.origin.x, selfFrame.origin.y + frame.size.height + horizontalBound)
+                }
+                newPaper.frame = NSRect(x: verticalBound, y: horizontalBound, width: frame.size.width, height: frame.size.height)
+                
+            }
             
+            //let trackingArea = NSTrackingArea.init(rect: newPaper.frame, options: NSTrackingAreaOptions.mouseEnteredAndExited, owner: newPaper, userInfo: nil)
+            // newPaper.addTrackingArea(trackingArea)
+            
+            View.addSubview(newPaper)
+            self.append(newPaper as! Element)
+            return true
         }
         else
         {
-            let frame_ = View.frame
-            View.frame.size = NSMakeSize(frame_.size.width, frame_.size.height + frame.size.height + 2*horizontalBound)
-            for ele in self
-            {
-                let selfFrame = ele.frame
-                ele.frame.origin = NSMakePoint(selfFrame.origin.x, selfFrame.origin.y + frame.size.height + horizontalBound)
-            }
-            newPaper.frame = NSRect(x: verticalBound, y: horizontalBound, width: frame.size.width, height: frame.size.height)
-            
+            return false
         }
-        
-        //let trackingArea = NSTrackingArea.init(rect: newPaper.frame, options: NSTrackingAreaOptions.mouseEnteredAndExited, owner: newPaper, userInfo: nil)
-       // newPaper.addTrackingArea(trackingArea)
-       
-        View.addSubview(newPaper)
-        self.append(newPaper as! Element)
-        return true
     }
+
+    mutating func addPaper(at frame: NSRect, with image: NSImage, on view: NSView) -> Bool
+    {
+        if let View : NSView = view {
+            let verticalBound: CGFloat = 0
+            let horizontalBound: CGFloat = 2
+            let newPaper = Paper()
+            newPaper.backgroundColor = NSColor.white
+            if (self.count == 0)
+            {
+                newPaper.frame = NSRect(x: frame.origin.x + verticalBound, y: frame.origin.y + horizontalBound, width: frame.size.width, height: frame.size.height)
+                newPaper.backgroundColor = NSColor.init(patternImage: image)
+            }
+            else
+            {
+                let frame_ = View.frame
+                View.frame.size = NSMakeSize(frame_.size.width, frame_.size.height + frame.size.height + 2*horizontalBound)
+                for ele in self
+                {
+                    let selfFrame = ele.frame
+                    ele.frame.origin = NSMakePoint(selfFrame.origin.x, selfFrame.origin.y + frame.size.height + horizontalBound)
+                }
+                newPaper.frame = NSRect(x: verticalBound, y: horizontalBound, width: frame.size.width, height: frame.size.height)
+                 newPaper.backgroundColor = NSColor.init(patternImage: image)
+                
+            }
+            
+            //let trackingArea = NSTrackingArea.init(rect: newPaper.frame, options: NSTrackingAreaOptions.mouseEnteredAndExited, owner: newPaper, userInfo: nil)
+            // newPaper.addTrackingArea(trackingArea)
+            
+            View.addSubview(newPaper)
+            self.append(newPaper as! Element)
+            return true
+        }
+        else
+        {
+            return false
+        }
+
+    }
+    mutating func captureScreens()
+    {
+        for ele in self
+        {
+            ele.screenShot()
+            ele.backgroundColor = NSColor.init(patternImage: ele.img)
+            ////
+            ele.path.removeAllPoints()
+            ele.countTimes = 0        }
+    }
+    
     /*
      mutating func resizeAllPapers(in View: NSView, with frameSize: NSRect)
      {

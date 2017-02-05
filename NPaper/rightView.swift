@@ -12,20 +12,13 @@ import Cocoa
 
 
 
-class RightView: NSScrollView, NSWindowDelegate
+class RightView: NSScrollView
 {
-    
     
     var viewsArray = [Paper]()
    
     var color : NSColor = NSColor.black
     
-    
-    override func scrollWheel(with event: NSEvent) {
-        let visibleRect = self.contentView.documentVisibleRect;
-        NSLog("Visible rect:%s", NSStringFromRect(visibleRect));
-       // let currentScrollPosition = visibleRect.origin;
-    }
     
     //set new point for papers when nsscroll is scrolled
     
@@ -45,6 +38,28 @@ class RightView: NSScrollView, NSWindowDelegate
         }
     }
     
+    public func displayWithViewsArray(viewarray: [Paper], with frame: NSRect)
+    {
+        self.documentView = NSView(frame: frame)
+        viewsArray = [Paper]()
+        for ele in viewarray
+        {
+            viewsArray.addPaper(at: frame, with: ele.img, on: self.documentView!)
+        }
+    }
+    
+    public func addNewPage(at frame: NSRect)
+    {
+        viewsArray.addStyle1(in: self.documentView!, with: frame)
+    }
+    
+    override init(frame frameRect: NSRect) {
+        super.init(frame: frameRect)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
     
 }
 

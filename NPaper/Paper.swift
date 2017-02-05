@@ -15,23 +15,21 @@ protocol PaperDelegate: class {
 }
 
 class Paper: NSView {
-    //@IBOutlet weak var _image: NSImage!
-    let diff = CGFloat(25)
     
-    let savingAfterTimes = 5
+    
+    let savingAfterTimes = 3
     var countTimes = 0
     
     var lineWidth : CGFloat = 1
     var pts: [CGPoint] = [CGPoint(),CGPoint(), CGPoint(), CGPoint(), CGPoint()]
     var ctr: NSInteger = 0
-    //  var oldFrame = NSZeroRect
     var img = NSImage()
     var scrollPoint = CGPoint()
     var color = NSColor.black
     
     private var firstPoint = NSPoint.zero
     private var lastPoint = NSPoint.zero
-    private var path = NSBezierPath()
+    var path = NSBezierPath()
     weak var delegate: PaperDelegate?
     
     
@@ -40,31 +38,37 @@ class Paper: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        // tempImage.drawInRect(dirtyRect)
-        // Drawing code here.
-        //  NSColor.white.setFill()
-        //  NSRectFill(self.frame)
-       /* let cursorSize = NSMakeSize(20, 20)
-        let curImg = NSImage(named: "cursor.png")
-        curImg?.size = cursorSize
-        let cursor = NSCursor.init(image: curImg!, hotSpot: NSMakePoint(cursorSize.width/2.0, cursorSize.height/2.0))
-        cursor.set()
-        */
+        setCursor()
+        
         color.set()
         path.stroke()
         path.lineWidth = lineWidth
         
         
     }
+    func setCursor()
+    {
+        let size = max(lineWidth, 7)
+        let cursorSize = NSMakeSize(size, size)
+        
+        if let curImg = NSImage(named: "cursor")
+        {
+            curImg.size = cursorSize
+            let cursor = NSCursor.init(image: curImg, hotSpot: NSMakePoint(cursorSize.width/2.0, cursorSize.height/2.0))
+            cursor.set()
+        }
+        
+    }
     
     override func mouseDown(with theEvent: NSEvent) {
-       // let y = theEvent.keyCode
-       // NSLog("\(theEvent.buttonNumber)")
-        let frame_ = convert(frame, to: nil)
+        // let y = theEvent.keyCode
+        // NSLog("\(theEvent.buttonNumber)")
+        //let frame_ = convert(frame, to: nil)
         countTimes += 1
-        var point = theEvent.locationInWindow
-        point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= (frame.origin.y - scrollPoint.y + diff)
+        let point_ = theEvent.locationInWindow
+        let point = convert(point_, from: nil)
+       // point.x -= (frame_.origin.x - frame.origin.x)
+        //point.y -= (frame.origin.y - scrollPoint.y + diff)
         firstPoint = point
         path.move(to: firstPoint)
         
@@ -74,13 +78,8 @@ class Paper: NSView {
     }
     
     override func mouseDragged(with theEvent: NSEvent) {
-        
-        //var point = theEvent.locationInWindow
-        let frame_ = convert(frame, to: nil)
-        //NSLog("%.2f %.2f", frame_.origin.x,frame.origin.x)
-        var point = theEvent.locationInWindow
-        point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= (frame.origin.y - scrollPoint.y + diff)
+        let point_ = theEvent.locationInWindow
+        let point = convert(point_, from: nil)
         ctr += 1
         pts[ctr] = point
         if (ctr == 4)
@@ -100,15 +99,29 @@ class Paper: NSView {
     }
     
     override func mouseUp(with theEvent: NSEvent) {
-        let frame_ = convert(frame, to: nil)
-        var point = theEvent.locationInWindow
-        point.x -= (frame_.origin.x - frame.origin.x)
-        point.y -= (frame.origin.y - scrollPoint.y + diff)
+        let point_ = theEvent.locationInWindow
+        let point = convert(point_, from: nil)
         lastPoint = point
-        path.line(to: lastPoint)
-        needsDisplay = true
-        if countTimes == savingAfterTimes
+        if lastPoint != firstPoint
         {
+            path.line(to: lastPoint)
+            needsDisplay = true
+            if countTimes == savingAfterTimes
+            {
+               screenShot()
+                self.backgroundColor = NSColor.init(patternImage: img)
+                ////
+                path.removeAllPoints()
+                countTimes = 0
+                
+            }
+        }
+        else
+        {
+            let rect = NSMakeRect(point.x - lineWidth/2, point.y - lineWidth/2, lineWidth, lineWidth)
+            path.appendOval(in: rect)
+            color.setFill()
+            path.fill()
             screenShot()
             self.backgroundColor = NSColor.init(patternImage: img)
             ////
@@ -119,7 +132,7 @@ class Paper: NSView {
         firstPoint = NSPoint.zero
         lastPoint = NSPoint.zero
     }
-   
+    
     
 }
 extension NSView {
